@@ -14,13 +14,11 @@ fi
 
 flagKey="flag{"
 
-
 if [[ ! -z "$2" ]]; then
         flagKey="$2"
 fi
 
 
-
-strings "$1" | grep "${flagKey}" 
-
-zbarimg "$1" | grep "${flagKey}"
+strings "$1" | grep "${flagKey}"
+ 
+zbarimg -q "$1" | grep "${flagKey}"
