@@ -2,13 +2,13 @@
 
 if [[ -z  "$1" ]]; then
         echo "Not Valid argument"
-        echo "Example: CTF-File-Checker-sh ~/file/to/file.txt"
+        echo "Example: CTF-File-Checker-sh ~/path/to/file.txt"
         exit 0
 fi
 
 if [[ ! -e "$1" ]]; then
         echo "File Does not Exist"
-        echo "Example: CTF-File-Checker-sh ~/file/to/file.txt"
+        echo "Example: CTF-File-Checker-sh ~/path/to/file.txt"
         exit 0
 fi
 
