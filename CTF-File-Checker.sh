@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ -z  "$1" ]]; then
         echo "Not Valid argument"
@@ -18,7 +18,9 @@ if [[ ! -z "$2" ]]; then
         flagKey="$2"
 fi
 
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-strings "$1" | grep "${flagKey}"
- 
-zbarimg -q "$1" | grep "${flagKey}"
+
+bash "$SCRIPTPATH/BasicStrings/BasicStrings.sh" "$1" "${flagKey}"
+
+bash "$SCRIPTPATH/QRCode/QRCode.sh" "$1" "${flagKey}"
