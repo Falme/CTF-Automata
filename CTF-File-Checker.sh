@@ -20,6 +20,7 @@ fi
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
+file "$1"
 
 bash "$SCRIPTPATH/BasicStrings/BasicStrings.sh" "$1" "${flagKey}"
 
