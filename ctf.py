@@ -6,7 +6,9 @@ import time
 import re
 
 
-print("==== Falme's CTF Automata ====\n")
+print("==============================")
+print("==== Falme's CTF Automata ====")
+print("==============================\n")
 print("Starting Application...\n\n")
 
 if (len(sys.argv) <= 2):
