@@ -1,11 +1,8 @@
 import sys
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-import time
-import re
 import validators
-import subprocess
 
+import Web.ctf_web as ctf_web
+import File.ctf_file as ctf_file
 
 print("==============================")
 print("==== Falme's CTF Automata ====")
@@ -21,33 +18,12 @@ else:
     address = sys.argv[1]
     flagID = sys.argv[2]
 
-    validation = validators.url(address)
-
-    if validation:
+    if validators.url(address):
         print("Address is an URL...")
-        print("Looking for flags in Address...")
-
-        driver = webdriver.Firefox()
-        
-        driver.get(address)
-        time.sleep(2)
-        
-        content = driver.page_source
-        print("Flags Found in Page Source:")
-        print(re.findall(flagID+"\{[^}]*\}",content, re.DOTALL))
-
-        driver.close()
+        ctf_web.initialize(address, flagID)
     else:
         print("Address is not an URL...")
         print("Trying File in System...")
         print("")
 
-        print("File Command:")
-        print(subprocess.run(["file", address], capture_output=True, text=True))
-
-        print("")
-        print("Strings Command:")
-        file_strings = str(subprocess.run(["strings", address], capture_output=True, text=True))
-        print(re.findall(flagID+"\{[^}]*\}",file_strings, re.DOTALL))
-
-
+        ctf_file.initialize(address, flagID)
