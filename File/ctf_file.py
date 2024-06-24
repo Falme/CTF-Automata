@@ -6,11 +6,11 @@ def initialize(address, flagID):
 
     if fileIsValid(address):
         print("File Command:")
-        print(subprocess.run(["file", address], capture_output=True, text=True))
+        print(subprocess.run(["file", address], capture_output=True, text=True).stdout)
 
         print("")
         print("Strings Command:")
-        file_strings = str(subprocess.run(["strings", address], capture_output=True, text=True))
+        file_strings = subprocess.run(["strings", address], capture_output=True, text=True).stdout
         print(re.findall(flagID+"\{[^}]*\}",file_strings, re.DOTALL))
 
 def fileIsValid(address):

@@ -9,7 +9,7 @@ def initialize(address, flagID):
     driver = webdriver.Firefox()
     
     driver.get(address)
-    time.sleep(2)
+    time.sleep(5)
     
     content = driver.page_source
     print("Flags Found in Page Source:")
